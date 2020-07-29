@@ -8,12 +8,12 @@ CORS(app)
 
 model = QA("model")
 
-@app.route("/",methods=['GET'])
+@app.route("/home",methods=['GET'])
 def predict():
     return "Hello to my AI platform"
 
 
-@app.route("/predict",methods=['POST'])
+@app.route("/",methods=['POST'])
 def predict():
     doc = request.form.get("document")
     q = request.form.get("question")
@@ -25,4 +25,4 @@ def predict():
         return jsonify({"result":"Model Failed"})
 
 if __name__ == "__main__":
-    app.run('0.0.0.0',port=8000)
+    app.run(port=8000)
