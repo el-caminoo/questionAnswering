@@ -105,4 +105,3 @@ venv.bak/
 .vscode/
 *.bin
 *.json
-*.txt
