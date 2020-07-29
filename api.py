@@ -14,7 +14,7 @@ def predict():
     q = request.json["question"]
     try:
         out = model.predict(doc,q)
-        return jsonify({"result":out})
+        return jsonify({"result":out['answer']})
     except Exception as e:
         print(e)
         return jsonify({"result":"Model Failed"})
