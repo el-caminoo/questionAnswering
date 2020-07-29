@@ -8,11 +8,6 @@ CORS(app)
 
 model = QA("model")
 
-@app.route("/home",methods=['GET'])
-def predict():
-    return "Hello to my AI platform"
-
-
 @app.route("/",methods=['POST'])
 def predict():
     doc = request.form.get("document")
