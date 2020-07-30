@@ -10,11 +10,11 @@ model = QA("model")
 
 @app.route("/",methods=['POST'])
 def predict():
-    doc = request.form.get("document")
-    q = request.form.get("question")
+    doc = request.json["document"]
+    q = request.json["question"]
     try:
         out = model.predict(doc,q)
-        return jsonify({"result":out['answer']})
+        return jsonify({"result":out['answer'], "confidence-level": out['confidence']})
     except Exception as e:
         print(e)
         return jsonify({"result":"Model Failed"})
