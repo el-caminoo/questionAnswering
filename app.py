@@ -8,18 +8,17 @@ CORS(app)
 
 model = QA("model")
 
-@app.route("/",methods=['GET'])
+@app.route("/",methods=['POST'])
 def predict():
-    return "hello world"
-    # doc = request.json["document"]
-    # q = request.json["question"]
-    # try:
-    #     out = model.predict(doc,q)
-    #     return jsonify({"result":out['answer'], "confidence-level": out['confidence']})
-    # except Exception as e:
-    #     print(e)
-    #     return jsonify({"result":"Model Failed"})
+    doc = request.json["document"]
+    q = request.json["question"]
+    try:
+        out = model.predict(doc,q)
+        return jsonify({"result":out['answer'], "confidence-level": out['confidence']})
+    except Exception as e:
+        print(e)
+        return jsonify({"result":"Model Failed"})
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="127.0.0.1", port=8000, debug=True, threaded=True)
     
