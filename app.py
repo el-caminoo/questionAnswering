@@ -20,5 +20,6 @@ def predict():
         return jsonify({"result":"Model Failed"})
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=443, debug=True, threaded=True)
+    app.run(port=8000)
+    
     
